@@ -20,9 +20,8 @@ export const App: React.FC = () => {
   return (
     <div className="starter">
       <Provider onClick={() => ({})}>
-        <h1>Hello Web Wizards</h1>
-      </Provider
-      >
+        <h1>Hello Web Wizardssss</h1>
+      </Provider>
     </div>
   );
 };
