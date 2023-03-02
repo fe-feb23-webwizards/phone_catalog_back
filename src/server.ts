@@ -1,17 +1,31 @@
-import express from 'express';
-import cors from 'cors';
+import express, { Application, Request, Response } from 'express';
+import fs from 'fs';
+import path from 'path';
+import {Phone} from './types/Phones';
 
-const PORT = process.env.PORT || 3000;
+const app: Application = express();
 
-const app = express();
+const phonesDir = path.join(__dirname, './data/phones');
 
-app.use(cors());
+app.get('/', (req: Request, res: Response) => {
+  const phones: Phone[] = [];
 
-app.use('/', (req, res) => {
-  res.send('Hello, web wizards');
+  fs.readdir(phonesDir, (err: NodeJS.ErrnoException | null, files: string[]) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(['Internal Server Error']);
+    }
+
+    files.forEach(file => {
+      const phoneData = fs.readFileSync(`${phonesDir}/${file}`);
+      console.log(file)
+      const phoneJson = JSON.parse(phoneData.toString());
+      phones.push(phoneJson);
+    });
+
+    res.send(phones);
+  });
 });
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`API is ready on http://localhost:${PORT}`);
-});
+const port: number = 5000;
+app.listen(port, () => console.log(`Server running on port http://localhost:${port} 🚀`));
