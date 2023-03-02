@@ -30,12 +30,14 @@ app.get('/', (req: Request, res: Response) => {
   );
 });
 
-app.use(cors({
-  origin: [
-    'http://localhost:3000/phone_catalog_front',
-    'https://fe-feb23-webwizards.github.io/phone_catalog_front/'
-  ]
-}));
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'https://fe-feb23-webwizards.github.io',
+    ],
+  })
+);
 
 const port = 5000;
 app.listen(port, () =>
