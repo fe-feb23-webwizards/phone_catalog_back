@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import fs from 'fs';
 import path from 'path';
 import { Phone } from './types/Phones';
+import cors from 'cors';
 
 const app: Application = express();
 
@@ -28,6 +29,8 @@ app.get('/', (req: Request, res: Response) => {
     }
   );
 });
+
+app.use(cors());
 
 const port = 5000;
 app.listen(port, () =>
