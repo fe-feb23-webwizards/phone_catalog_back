@@ -8,7 +8,7 @@ const app: Application = express();
 
 const phonesDir = path.join(__dirname, './data/phones');
 
-app.get('/phones', (req: Request, res: Response) => {
+app.get('/phones', cors(), (req: Request, res: Response) => {
   const phones: Phone[] = [];
 
   fs.readdir(
@@ -29,15 +29,6 @@ app.get('/phones', (req: Request, res: Response) => {
     }
   );
 });
-
-app.use(
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'https://fe-feb23-webwizards.github.io',
-    ],
-  })
-);
 
 const port = 5000;
 app.listen(port, () =>
