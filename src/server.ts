@@ -8,7 +8,7 @@ const app: Application = express();
 
 const phonesDir = path.join(__dirname, './data/phones');
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/phones', (req: Request, res: Response) => {
   const phones: Phone[] = [];
 
   fs.readdir(
