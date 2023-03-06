@@ -6,7 +6,7 @@ import cors from 'cors';
 
 const app: Application = express();
 
-const phonesDir = path.join(__dirname, './data/phones');
+const phonesDir = path.join(__dirname, '../src/data/phones');
 
 app.get('/phones', cors(), (req: Request, res: Response) => {
   const phones: Phone[] = [];
