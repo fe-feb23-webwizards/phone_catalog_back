@@ -28,4 +28,4 @@ app.get('/phones', (0, cors_1.default)(), (req, res) => {
     });
 });
 const port = 5000;
-app.listen(port, () => console.log(`Server running on port http://localhost:${port} 🚀`));
+app.listen(port, () => console.log(`Server running on port http://localhost:${port} 🚀 hello`));
