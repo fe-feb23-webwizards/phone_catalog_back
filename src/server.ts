@@ -33,6 +33,6 @@ app.get('/phones', cors(), (req: Request, res: Response) => {
 });
 
 const port = 5000;
-app.listen(port, () =>
+app.listen(proces.env.PORT || port, () =>
   console.log(`Server running on port http://localhost:${port} 🚀 hello`)
 );
