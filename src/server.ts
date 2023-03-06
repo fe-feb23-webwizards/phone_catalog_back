@@ -40,6 +40,6 @@ app.use(
 );
 
 const port = 5000;
-app.listen(port, () =>
+app.listen(process.env.PORT || port, () =>
   console.log(`Server running on port http://localhost:${port} 🚀`)
 );
