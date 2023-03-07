@@ -15,27 +15,32 @@ async function getMany(
 ) {
   let loadedData: PhoneType[];
 
-  switch(sortBy) {
-  case SortBy.Alphabetically:
-    loadedData = await Phones.findAll({
-      order: ['name'],
-      raw: true,
-    });
-    break;
+  try {
+    switch(sortBy) {
+    case SortBy.Alphabetically:
+      loadedData = await Phones.findAll({
+        order: ['name'],
+        raw: true,
+      });
+      break;
 
-  case SortBy.Cheapest:
-    loadedData = await Phones.findAll({
-      order: ['price'],
-      raw: true,
-    });
-    break;
+    case SortBy.Cheapest:
+      loadedData = await Phones.findAll({
+        order: ['price'],
+        raw: true,
+      });
+      break;
 
-  default:
-    loadedData = await Phones.findAll({
-      order: [['year', 'DESC']],
-      raw: true,
-    });
-    break;
+    default:
+      loadedData = await Phones.findAll({
+        order: [['year', 'DESC']],
+        raw: true,
+      });
+      break;
+    }
+  } catch (e) {
+    console.error(e);
+    loadedData = [];
   }
 
   const phonesToSkip = perPage * (page - 1);

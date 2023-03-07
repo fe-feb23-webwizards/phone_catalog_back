@@ -1,4 +1,4 @@
-const { phonesDetails } = require('../../models');
+const { phonesDetails } = require('../../database/models');
 import _ from 'lodash';
 import { PhoneDetails as PhoneDetailsType } from '../types/PhoneDetails';
 
