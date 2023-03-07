@@ -1,0 +1,28 @@
+{
+  "development": {
+    "username": "sdelanvdnb",
+    "password": "s5yu4qotvHKd",
+    "database": "neondb",
+    "host": "ep-late-boat-493332.eu-central-1.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": true
+    }
+  },
+  "test": {
+    "username": "sdelanvdnb",
+    "password": "s5yu4qotvHKd",
+    "database": "neondb",
+    "host": "ep-late-boat-493332.eu-central-1.aws.neon.tech",
+    "dialect": "postgres",
+    "sslmode": "require"
+  },
+  "production": {
+    "username": "sdelanvdnb",
+    "password": "s5yu4qotvHKd",
+    "database": "neondb",
+    "host": "ep-late-boat-493332.eu-central-1.aws.neon.tech",
+    "dialect": "postgres",
+    "sslmode": "require"
+  }
+}

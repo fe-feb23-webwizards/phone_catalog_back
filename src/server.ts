@@ -5,6 +5,8 @@ import cors from 'cors';
 
 const app: Application = express();
 
+app.use(cors());
+
 const productsDir = path.join(__dirname, '../src/data/phones');
 
 app.get('/phones', cors(), (req: Request, res: Response) => {
