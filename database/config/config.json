@@ -15,7 +15,9 @@
     "database": "neondb",
     "host": "ep-late-boat-493332.eu-central-1.aws.neon.tech",
     "dialect": "postgres",
-    "sslmode": "require"
+    "dialectOptions": {
+      "ssl": true
+    }
   },
   "production": {
     "username": "sdelanvdnb",
@@ -23,6 +25,8 @@
     "database": "neondb",
     "host": "ep-late-boat-493332.eu-central-1.aws.neon.tech",
     "dialect": "postgres",
-    "sslmode": "require"
+    "dialectOptions": {
+      "ssl": true
+    }
   }
 }
