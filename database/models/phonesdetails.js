@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   phonesDetails.init({
-    id: DataTypes.STRING,
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true
+    },
     namespaceId: DataTypes.STRING,
     name: DataTypes.STRING,
     capacityAvailable: DataTypes.ARRAY(DataTypes.STRING),

@@ -34,6 +34,34 @@ app.get('/phones', cors(), (req: Request, res: Response) => {
   );
 });
 
+app.get('/phones/:phoneId', cors(), (req: Request, res: Response) => {
+  const { productId } = req.params;
+
+  fs.readdir(
+    productsDir,
+    (err: NodeJS.ErrnoException | null, files: string[]) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send(['Internal Server Error']);
+      }
+      const foundProduct = files.find(product => {
+        const productData = fs.readFileSync(`${productsDir}/${product}`);
+        const productJson = JSON.parse(productData.toString());
+
+        return productJson.id === productId;
+      });
+
+      if (!foundProduct) {
+        return res.status(500).send(['Product is not found']);
+      }
+
+      const productData = fs.readFileSync(`${productsDir}/${foundProduct}`);
+      const productJson = JSON.parse(productData.toString());
+
+      res.send(productJson);
+    });
+});
+
 const port = 5000;
 app.listen(process.env.PORT || port, () =>
   console.log(`Server running on port http://localhost:${port} 🚀 hello`)

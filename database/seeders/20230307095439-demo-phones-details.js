@@ -1,27 +1,30 @@
+const { phonesDetails } = require('../models');
+const fs = require('fs/promises');
+const path = require('path');
 
-
-'use strict';
+const demoDataDirectoryPath = path.join(path.dirname(path.dirname(__dirname)), 'demodata');
 
 /** @type {import('sequelize-cli').Migration} */
-const data = require('../../result.json');
-const URL = 'https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_images/main/';
-
-const preaperedData = data.map(d => {
-  return {
-    ...d,
-    description: JSON.stringify(d.description),
-    images: d.images.map(i => URL + i),
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-});
-
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('phonesDetails', preaperedData , {});
+  async up(queryInterface, Sequelize) {
+    const demoPhonesDirectory = path.join(demoDataDirectoryPath, 'phones');
+    const files = await fs.readdir(demoPhonesDirectory);
+
+
+    const phoneDetailsArr = [];
+
+    for (const file of files) {
+      const filePath = path.join(demoPhonesDirectory, file);
+      const content = await fs.readFile(filePath, 'utf-8');
+      const phoneDetails = JSON.parse(content);
+      phoneDetails.description = JSON.stringify(phoneDetails.description);
+      phoneDetailsArr.push(phoneDetails);
+    }
+
+    await queryInterface.bulkInsert('phonesDetails', phoneDetailsArr, {});
   },
 
-  async down (queryInterface, Sequelize) {
-    return await queryInterface.bulkDelete('phonesDetails', null, {});
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('phonesDetails', null, {});
+  },
 };
