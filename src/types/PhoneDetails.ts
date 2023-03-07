@@ -1,4 +1,4 @@
-export interface Phone {
+export interface PhoneDetails {
   id: string;
   namespaceId: string;
   name: string;
@@ -20,4 +20,5 @@ export interface Phone {
   camera: string;
   zoom: string;
   cell: string[];
+  createdAt?: Date;
 }

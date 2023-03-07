@@ -1,34 +1,37 @@
-import { SortBy } from '../types/SortBy.mjs';
-import db from '../../models/index.js';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { Phones } = require('../../database/models');
+import { Phone as PhoneType } from '../types/Phone';
+import { SortBy } from '../types/SortBy';
 
-function normalize(phone) {
+function normalize(phone: PhoneType) {
   const copyOfPhone = { ...phone };
-
-  delete copyOfPhone.createdAt;
-
   return copyOfPhone;
 }
 
-async function getMany(page, perPage, sortBy) {
-  let loadedData;
+async function getMany(
+  page: number,
+  perPage: number,
+  sortBy: string,
+) {
+  let loadedData: PhoneType[];
 
-  switch (sortBy) {
+  switch(sortBy) {
   case SortBy.Alphabetically:
-    loadedData = await db.Phones.findAll({
+    loadedData = await Phones.findAll({
       order: ['name'],
       raw: true,
     });
     break;
 
   case SortBy.Cheapest:
-    loadedData = await db.Phones.findAll({
+    loadedData = await Phones.findAll({
       order: ['price'],
       raw: true,
     });
     break;
 
   default:
-    loadedData = await db.Phones.findAll({
+    loadedData = await Phones.findAll({
       order: [['year', 'DESC']],
       raw: true,
     });
@@ -46,8 +49,8 @@ async function getMany(page, perPage, sortBy) {
   };
 }
 
-function findById(phoneId) {
-  return db.Phones.findByPk(phoneId);
+function findById(phoneId: string) {
+  return Phones.findByPk(phoneId);
 }
 
 export const phonesServices = {
