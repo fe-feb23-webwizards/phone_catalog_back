@@ -1,4 +1,3 @@
-const { phonesDetails } = require('../models');
 const fs = require('fs/promises');
 const path = require('path');
 
@@ -11,7 +10,7 @@ const CDN_PREFIX =
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     const demoPhonesDirectory = path.join(demoDataDirectoryPath, 'phones');
     const files = await fs.readdir(demoPhonesDirectory);
 
@@ -32,7 +31,7 @@ module.exports = {
     await queryInterface.bulkInsert('phonesDetails', phoneDetailsArr, {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete('phonesDetails', null, {});
   },
 };
