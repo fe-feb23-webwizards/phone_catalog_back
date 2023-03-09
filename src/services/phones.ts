@@ -8,15 +8,11 @@ function normalize(phone: PhoneType) {
   return copyOfPhone;
 }
 
-async function getMany(
-  page: number,
-  perPage: number,
-  sortBy: string,
-) {
+async function getMany(page: number, perPage: number, sortBy: string) {
   let loadedData: PhoneType[];
 
   try {
-    switch(sortBy) {
+    switch (sortBy) {
     case SortBy.Alphabetically:
       loadedData = await Phones.findAll({
         order: ['name'],

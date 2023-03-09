@@ -15,5 +15,5 @@ function findById(phoneId: string) {
 
 export const phoneDetailsServices = {
   normalize,
-  findById
+  findById,
 };

@@ -8,64 +8,64 @@ module.exports = {
         type: Sequelize.STRING,
       },
       namespaceId: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       capacityAvailable: {
-        type: Sequelize.ARRAY( Sequelize.STRING )
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       capacity: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       priceRegular: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       priceDiscount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       colorsAvailable: {
-        type: Sequelize.ARRAY( Sequelize.STRING )
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       color: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       images: {
-        type: Sequelize.ARRAY( Sequelize.STRING )
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       description: {
-        type:  Sequelize.JSON
+        type: Sequelize.JSON,
       },
       screen: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       resolution: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       processor: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       ram: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       camera: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       zoom: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       cell: {
-        type: Sequelize.ARRAY( Sequelize.STRING )
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-      }
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('phonesDetails');
-  }
+  },
 };
