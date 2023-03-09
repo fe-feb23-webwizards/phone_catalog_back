@@ -12,14 +12,14 @@ const demoDataDirectoryPath = path.join(
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     const phonesJsonContent = JSON.parse(
       await fs.readFile(path.join(demoDataDirectoryPath, 'phones.json'))
     );
     await queryInterface.bulkInsert('Phones', phonesJsonContent, {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete(Phones.tableName, null, {});
   },
 };
