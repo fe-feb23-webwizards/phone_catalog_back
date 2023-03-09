@@ -9,11 +9,7 @@ const getMany = async (req: Request, res: Response) => {
   const perPage = Number(params.get('perPage')) || 16;
   const sortBy = params.get('sortBy') || SortBy.Newest;
 
-  const loadPhones = await phonesServices.getMany(
-    page,
-    perPage,
-    sortBy,
-  );
+  const loadPhones = await phonesServices.getMany(page, perPage, sortBy);
 
   res.send({
     data: loadPhones.result,

@@ -13,11 +13,11 @@ const getOne = async (req: Request, res: Response) => {
     }
 
     res.send(
-      phoneDetailsServices.normalize(findPhoneById.get({ plain: true })),
+      phoneDetailsServices.normalize(findPhoneById.get({ plain: true }))
     );
 
     return findPhoneById;
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     res.sendStatus(500);
   }
