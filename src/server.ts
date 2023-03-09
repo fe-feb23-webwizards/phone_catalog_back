@@ -3,6 +3,7 @@ import cors from 'cors';
 
 import { router as phoneDetailsRouter } from './routes/phoneDetails';
 import { router as phonesRouter } from './routes/phone';
+import { token } from './services/tokenGenerator';
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -12,7 +13,7 @@ app.use(express.json());
 
 app.use('/login', (req, res) => {
   res.send({
-    token: 'test123',
+    token: token(),
   });
 });
 
